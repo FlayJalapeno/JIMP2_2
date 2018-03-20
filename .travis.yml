@@ -47,6 +47,8 @@ script:
   - tests/lab2test/lab2_polybius_step2_tests
   - make lab2_xor_cypher_breaker_tests
   - tests/lab2test/lab2_xor_cypher_breaker_tests
+  - make lab3_tiny_url_step1_tests
+  - tests/lab3test/lab3_tiny_url_step1_tests
   
 notifications:
   email: false
