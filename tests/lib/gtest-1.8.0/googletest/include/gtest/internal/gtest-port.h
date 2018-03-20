@@ -399,7 +399,9 @@
 // assuming CRITICAL_SECTION is a typedef of _RTL_CRITICAL_SECTION.
 // This assumption is verified by
 // WindowsTypesTest.CRITICAL_SECTIONIs_RTL_CRITICAL_SECTION.
-struct _RTL_CRITICAL_SECTION;
+// struct _RTL_CRITICAL_SECTION;
+// The assumption above causes problems with MinGW 4.8.1.
+# include <windows.h>
 #else
 // This assumes that non-Windows OSes provide unistd.h. For OSes where this
 // is not the case, we need to include headers that provide the functions
@@ -1693,7 +1695,7 @@ class GTEST_API_ Mutex {
   // by the linker.
   MutexType type_;
   long critical_section_init_phase_;  // NOLINT
-  _RTL_CRITICAL_SECTION* critical_section_;
+    CRITICAL_SECTION* critical_section_;
 
   GTEST_DISALLOW_COPY_AND_ASSIGN_(Mutex);
 };
